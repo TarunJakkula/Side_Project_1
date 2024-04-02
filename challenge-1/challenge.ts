@@ -1,3 +1,4 @@
+import * as fs from "fs";
 import downloadFile from "./helper/download";
 import extractFile from "./helper/extract";
 import processCSV from "./helper/process";
@@ -14,6 +15,7 @@ export function processDataDump(): Promise<void> {
 
     try {
       // Download the file
+      fs.mkdirSync("tmp");
       console.log("Downloading...");
       await downloadFile(fileUrl, filePath);
       console.log("\nDownload complete!\n");
